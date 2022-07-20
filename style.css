@@ -1,0 +1,559 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+
+
+
+
+/* Declaring variable */
+:root {
+
+    
+    /* grayColor */
+    --gray-50: hsl(0, 0%, 98%);
+    --gray-100: hsl(0, 0%, 94%);
+    --gray-200: hsl(0, 0%, 85%);
+    --gray-700: hsl(0, 0%, 25%);
+    --gray-900: hsl(0, 0%, 9%);
+
+    /* other color */
+    --background-color-button: 	hsl(0, 100%, 43%);
+
+    /* font color */
+    --font-color-default: hsl(0, 0%, 5%);
+    --font-color-on-black-background: hsl(0, 0%, 95%);
+    --font-color-button: hsl(0, 0%, 95%);
+
+    /* font family */
+    --font-family-default: 'Source Sans Pro', sans-serif;
+    --font-family-heading: 'Source Code Pro', monospace;
+
+    /* box-shadow */
+   
+    --outlined-shadowed-button: hsl(0, 0%, 60%) inset 0.5px 0.5px 0.5px 0.5px;
+    --card-box-shadow:rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+  }
+
+
+/* Breakpoints */
+
+/* for breakpoints, variable can't be used. So, I've passed value manually.  
+
+    I am following mobile-first approach. So, I am having  a min-width of 37em(592px) for tablet and up and min-width of 64em(1024px)  for laptop and up. 
+
+    If I need to change these values, I can simply search those values (ctrl+f) and replace them with the new value. 
+
+*/
+
+
+
+/* Global Styles */
+
+* {
+    margin: 0;
+
+    padding: 0;
+
+    overflow-x: hidden;
+
+    font-family: var(--font-family-default);
+  }
+
+
+body {
+
+    background-color: var(--gray-50);
+    color: var(--font-color-default);
+
+
+    /* If any section of the page is not full-width, then centering the section in the screen is a good idea. So, I am using 'display:flex' here.  Also, using 'flex-direction:column'  so that the normal stacking flow of the html doesn't get hurt. To center any not full-width section, using 'align-items:center'.*/
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* having gap between all sections of the page */
+    gap:2rem;
+}
+
+
+/* link */
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* for header title = h1, for any other title = h2, for normal text = p, for subtitle type of small text = h6 */
+
+
+  h1, h3{ 
+    font-weight: 600;
+  }
+  
+  h1 {
+    font-family: var(--font-family-heading);
+    font-size: clamp( 1.75rem, 1.65625rem + 0.5vw, 2.125rem );
+  }
+  
+  
+  h3 {
+      font-size: clamp( 1.1875rem, 1.09375rem + 0.5vw, 1.5625rem );  
+  }
+  
+  h6, p {
+    font-weight: 400;
+    font-size: clamp( 1rem, 0.90625rem + 0.5vw, 1.375rem );
+  }
+
+
+  h6 {
+      opacity: 90%;
+  }
+  
+  
+  p, button{
+      opacity: 95%;
+  }
+
+  
+ 
+  
+  /* Utility Classes */
+
+  .btn {
+      padding: 0.4rem 0.75rem; 
+      font-weight: 400;
+      border-radius: 0.5rem;
+
+ 
+  }
+
+  .btn:hover {
+    opacity: 80%;
+  }
+
+  .btn-contained {
+      border:0rem;
+      background-color: var(--background-color-button);
+      color: var(--font-color-button);
+  }
+
+  .btn-outlined {
+    border: 0.1rem solid var(--font-color-default);
+    background-color: transparent;
+  }
+
+  .btn-outlined-shadowed {
+    border: 0.1rem solid var(--gray-200);
+    background-color: var(--gray-100);
+  }
+
+  .btn-size-normal {
+    font-size: clamp( 1rem, 0.90625rem + 0.5vw, 1.375rem );
+  }
+
+  .btn-size-large {
+    font-size: clamp( 1.1875rem, 1.09375rem + 0.5vw, 1.5625rem ); 
+  }
+  
+
+
+
+  /* header (mobile first design) */
+
+  #header{
+    background-color: var(--gray-900);
+    color:  var(--font-color-on-black-background);
+
+    text-align: center;
+   
+    
+    width:100%;
+    padding-top: 2rem;
+
+  
+    display:grid;
+    gap:2rem;
+    grid-template-columns: 1fr;
+    grid-template-areas: "not-banner" "banner";
+  }
+
+
+  @media screen and (min-width:37em){
+
+    #header{
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "not-banner banner" "not-banner banner";
+    }
+  }
+
+
+
+
+
+  #header-not-banner{
+    grid-area: not-banner;
+
+    padding:2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem; 
+  }
+
+  @media screen and (min-width:37em){
+
+    #header-not-banner{
+
+        justify-content: center;
+
+      }
+
+  }
+
+
+  #header-not-banner button {
+
+    display:flex;
+    gap:1rem;
+    align-items: center;
+  }
+
+
+
+  #header-banner{
+    grid-area: banner;
+
+    display: flex;
+    justify-content: center;
+
+
+    /* to place the footballer's head in the center, have to use padding-left  */
+    padding-left: 3rem;
+
+  } 
+
+  @media screen and (min-width:37em){
+
+    #header-banner{
+      
+        padding-top:3rem;
+
+
+        /* to place the player's head, I used padidng-left in the mobile design which is not needed now */
+        padding-left: 0rem;
+    
+      } 
+
+  }
+
+
+
+  
+
+
+  
+
+  /* Animation on the header */
+
+   #header-not-banner {
+ 
+   animation: opacityAnimation 3s 1 linear;
+ 
+   }
+ 
+   #header-banner {
+ 
+     animation: fadeInLeft 2.5s 1 ease-out;
+ 
+   }
+ 
+ 
+ 
+ 
+   @keyframes opacityAnimation {
+     0% {
+        opacity:0%;
+ 
+     }
+     100% {
+        opacity:100%;
+        transform: translateX(0);
+     }
+  }
+   
+   @keyframes fadeInLeft {
+     0% {
+  
+        transform: translateX(2000px);
+     }
+     100% {
+   
+        transform: translateX(0);
+     }
+  }
+
+
+
+
+
+  /* main-section */
+
+
+  /* the index.html has 'blog-card' and the upcomingMatch.html has the 'upcoming-match-card' */
+
+  .main-section{
+
+    display:grid;
+    grid-template-columns: 1fr;
+    gap:1rem;
+
+  }
+
+
+  @media screen and (min-width:64em){
+
+      .main-section{
+
+        grid-template-columns: 1fr 3fr;
+    
+      }
+
+  }
+
+
+
+
+  /* navigation-buttons < main-section */
+
+  .navigation-buttons {
+    display:flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  @media screen and (min-width:37em){
+
+    .navigation-buttons {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+  }
+
+
+  @media screen and (min-width:64em){
+
+    .navigation-buttons {
+        align-self: flex-start;
+        flex-direction: column;
+        background-color: var(--gray-900);
+        padding:1.5rem;
+      }
+
+  }
+
+
+
+
+
+  /* blog-cards < main-section */
+
+  .blog-cards, .upcoming-match-cards {
+
+    display:grid;
+    gap:1.5rem;
+    grid-template-columns: 1fr;
+  }
+
+
+  @media screen and (min-width:37em){
+
+    .blog-cards, .upcoming-match-cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+  }
+
+
+  @media screen and (min-width:64em){
+
+    .blog-cards, .upcoming-match-cards {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+  }
+
+
+  /* blog-card < blog-cards < main-section */
+
+  .blog-card, .upcoming-match-card{
+    width: 15rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow-card);
+    background-color: var(--gray-100);
+
+
+    display:flex;
+    flex-direction: column;
+    gap:0.2rem;
+  }
+
+
+  .blog-card-content{
+    padding: 1rem;
+
+   
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:1rem;
+  }
+
+
+  .blog-card-content-icons{
+    display: flex;
+    gap:1.5rem;
+    align-items: center;
+  }
+
+  .blog-card-content-icon {
+
+    display: flex;
+    gap:0.5rem;
+    align-items: center;
+  }
+
+ 
+
+
+
+  /* upcoming-match-card needs the following styles too  */
+
+  .upcoming-match-card{
+    
+    gap:1rem;
+    align-items: center;
+    padding:1.5rem;
+    
+  }
+
+
+  .upcoming-match-card-flags {
+    display:flex;
+    gap:1rem;
+
+  }
+
+  .upcoming-match-card-flags p{
+   align-self: center;
+   font-weight: 600;
+  }
+
+
+  /* at the end of the main-section, there is a button which will only be visible in the tablet */
+
+  .tablet-only-button {
+    display:none;
+  }
+
+
+  @media screen and (min-width:37em){
+
+    .tablet-only-button {
+     display:block;
+     justify-self: center;
+     margin-top: 2rem;
+  }
+
+  }
+
+
+  @media screen and (min-width:64em){
+
+    .tablet-only-button {
+      display:none;
+    }
+
+  }
+
+
+
+
+  /* footer */
+
+
+  .footer{
+
+    background-color: var(--gray-900);
+    color: var(--gray-50);
+
+    width:100%;
+    padding:2rem;
+
+    display:flex;
+    flex-direction: column;
+    gap:2rem;
+    align-items: center;
+  }
+
+  .footer-title{
+    text-align: center;
+    width:75%;
+    
+    margin-bottom:1rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--gray-700);
+  }
+
+
+  .footer-link {
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1.5rem;
+
+
+    /* as I have choosed width:75% for 'footer-title' */
+    width:75%;
+
+  }
+
+
+
+  @media screen and (min-width:37em){
+
+    .footer-link{
+
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    
+    }
+  }
+  
+
+
+  .footer-icons{
+
+    display:flex;
+    gap:1.5rem;
+  }
+
+  .footer-icons .fa-lg:hover{
+    color: var(--gray-200)
+  }
+
+
+
+
+
+
+
+
+
+
